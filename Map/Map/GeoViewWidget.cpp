@@ -301,14 +301,6 @@ void GeoViewWidget::clearCutouts() {
   GeoViewCutoutFeature::clearCutouts(*this);
 }
 
-QVector<QGV::GeoPos> GeoViewWidget::buildRouteWithAngle(
-    double stepMeters, double angleDegrees, double offsetFromContour,
-    double offsetCut  // не нужен, смотреть на buildRouteWithAngleForCustomRoute
-) {
-  return GeoViewRouteFeature::buildRouteWithAngle(
-      *this, stepMeters, angleDegrees, offsetFromContour, offsetCut);
-}
-
 void GeoViewWidget::removeContour() {
   GeoViewContourFeature::removeContour(*this);
 }

@@ -7,7 +7,7 @@
 
 int main(int argc, char* argv[]) {
   QApplication app(argc, argv);
-  app.setApplicationName("QGeoView Samples");
+  app.setApplicationName("Map");
   app.setStyle(QStyleFactory::create("Fusion"));
 
   QCommandLineParser parser;

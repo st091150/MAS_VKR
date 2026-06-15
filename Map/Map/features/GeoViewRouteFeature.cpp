@@ -446,52 +446,12 @@ RouteAlgo::PipelineStage GeoViewRouteFeature::lastSuccessfulStage() {
 }
 const QVector<QGV::GeoPos>& GeoViewRouteFeature::lastRouteGeo() { return gLastRouteGeo; }
 
-QVector<QGV::GeoPos> GeoViewRouteFeature::buildRouteWithAngle(GeoViewWidget& view,
-                                                              double stepMeters,
-                                                              double angleDegrees,
-                                                              double offsetFromContour,
-                                                              double offsetCut) {
-  Q_UNUSED(offsetCut);
-  if (view.mContour->points().size() < 2 || !view.mMap) return {};
-
-  QVector<QPointF> projContour;
-  projContour.reserve(view.mContour->points().size());
-  for (const auto& g : view.mContour->points()) {
-    projContour.push_back(view.mMap->getProjection()->geoToProj(g));
-  }
-
-  QPointF startProj = projContour.front();
-  if (view.mState.manualStartPoint.latitude() != 0.0 ||
-      view.mState.manualStartPoint.longitude() != 0.0) {
-    startProj = view.mMap->getProjection()->geoToProj(view.mState.manualStartPoint);
-  } else if (view.mRobotItem.item) {
-    startProj = view.mMap->getProjection()->geoToProj(view.mRobotItem.pos);
-  }
-
-  constexpr bool kDefaultRightSide = true;
-  const QVector<QPointF> projRoute = buildBasicCoverageProj(
-      projContour, stepMeters, angleDegrees, offsetFromContour, startProj, kDefaultRightSide,
-      true);
-  if (projRoute.size() < 2) return {};
-
-  QVector<QGV::GeoPos> snakePath;
-  snakePath.reserve(projRoute.size());
-  for (const auto& p : projRoute) {
-    snakePath.push_back(view.mMap->getProjection()->projToGeo(p));
-  }
-
-  view.clearRouteLayer();
-  return snakePath;
-}
-
 bool GeoViewRouteFeature::buildBasicParallelCoverageRoute(GeoViewWidget& view, double stepMeters,
                                                           double angleDegrees,
                                                           double offsetFromContour,
-                                                          double offsetCut,
                                                           const QGV::GeoPos& routeStartPoint,
                                                           const QGV::GeoPos& routeEndPoint,
                                                           bool hasEndPoint, bool rightSide) {
-  Q_UNUSED(offsetCut);
   gLastBuildOk = false;
   gLastBuildStatus = QObject::tr("Маршрут не построен");
   gLastRouteGeo.clear();

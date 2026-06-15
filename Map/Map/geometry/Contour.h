@@ -13,7 +13,6 @@ class Contour {
 
   void draw();
   void clear();
-  void generateParallelRoute(double spacing);
   bool isPointOnContour(const QGV::GeoPos& point,
                         double toleranceMeters = 1.0) const;
   double distanceToSegment(const QGV::GeoPos& p, const QGV::GeoPos& v,

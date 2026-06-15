@@ -54,14 +54,9 @@ class GeoViewRouteFeature {
   static RouteAlgo::PipelineStage lastSuccessfulStage();
   static const QVector<QGV::GeoPos>& lastRouteGeo();
 
-  static QVector<QGV::GeoPos> buildRouteWithAngle(GeoViewWidget& view, double stepMeters,
-                                                  double angleDegrees,
-                                                  double offsetFromContour = 2.0,
-                                                  double offsetCut = 2.0);
   // Упрощённый режим: параллельные ряды + змейка, без вырезов и без сшивки островов.
   static bool buildBasicParallelCoverageRoute(GeoViewWidget& view, double stepMeters,
-                                              double angleDegrees,
-                                              double offsetFromContour, double offsetCut,
+                                              double angleDegrees, double offsetFromContour,
                                               const QGV::GeoPos& routeStartPoint,
                                               const QGV::GeoPos& routeEndPoint, bool hasEndPoint,
                                               bool rightSide = true);

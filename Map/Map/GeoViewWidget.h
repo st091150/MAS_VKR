@@ -90,11 +90,6 @@ class GeoViewWidget : public QWidget {
 
   void updateInfoList();
 
-  QVector<QGV::GeoPos> buildRouteWithAngle(double stepMeters,
-                                           double angleDegrees,
-                                           double offsetFromContour = 2.0,
-                                           double offsetCut = 2.0);
-
   void buildRouteWithAngleForCustomRoute(
       double stepMeters, double angleDegrees, double offsetFromContour,
       const QGV::GeoPos& startPointParam, const QGV::GeoPos& endPointParam, bool rightSide,

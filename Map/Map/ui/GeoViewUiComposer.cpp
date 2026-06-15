@@ -315,10 +315,10 @@ QWidget* GeoViewUiComposer::createRouteParamsWidget(GeoViewWidget& view) {
   step->setValue(4.0);
   addFieldBlock(view.tr("Шаг между линиями (м)"), step);
 
-  QDoubleSpinBox* cut = new QDoubleSpinBox();
-  cut->setRange(0, 50);
-  cut->setValue(2.0);
-  addFieldBlock(view.tr("Отступ при развороте (м)"), cut);
+  QDoubleSpinBox* contourOffset = new QDoubleSpinBox();
+  contourOffset->setRange(0, 50);
+  contourOffset->setValue(2.0);
+  addFieldBlock(view.tr("Отступ от границы (м)"), contourOffset);
 
   QCheckBox* basicCoverageMode = new QCheckBox(
       view.tr("Упрощённый алгоритм\n(параллельное покрытие)"));
@@ -633,7 +633,7 @@ QWidget* GeoViewUiComposer::createRouteParamsWidget(GeoViewWidget& view) {
   });
 
   QObject::connect(build, &QPushButton::clicked, &view,
-                   [&view, step, angle, cut, basicCoverageMode, debugMode, tabs, stageTabs,
+                   [&view, step, angle, contourOffset, basicCoverageMode, debugMode, tabs, stageTabs,
                     refreshTabs]() {
     if (!view.mContour || view.mContour->points().size() < 3) {
       view.setUiStatus(view.tr("Построение невозможно: контур не задан"),
@@ -658,7 +658,7 @@ QWidget* GeoViewUiComposer::createRouteParamsWidget(GeoViewWidget& view) {
                               view.mState.manualEndPoint.longitude() != 0.0;
       constexpr bool kDefaultRightSide = true;
       const bool ok = GeoViewRouteFeature::buildBasicParallelCoverageRoute(
-          view, step->value(), angle->value(), cut->value(), cut->value(),
+          view, step->value(), angle->value(), contourOffset->value(),
           view.mState.manualStartPoint, view.mState.manualEndPoint, hasEndPoint,
           kDefaultRightSide);
       if (!ok) {
@@ -688,7 +688,7 @@ QWidget* GeoViewUiComposer::createRouteParamsWidget(GeoViewWidget& view) {
       if (tab.stepPlay && tab.stepPlay->isChecked()) tab.stepPlay->setChecked(false);
       if (tab.playTimer) tab.playTimer->stop();
     }
-    view.buildRouteWithAngleForCustomRoute(step->value(), angle->value(), cut->value(),
+    view.buildRouteWithAngleForCustomRoute(step->value(), angle->value(), contourOffset->value(),
                                            view.mState.manualStartPoint, view.mState.manualEndPoint,
                                            kDefaultRightSide, debugMode->isChecked(), stageToShow);
     refreshTabs();

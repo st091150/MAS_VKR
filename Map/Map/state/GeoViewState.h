@@ -12,10 +12,6 @@ struct GeoViewState {
   QGV::GeoPos manualStartPoint = {0, 0};
   QGV::GeoPos manualEndPoint = {0, 0};
 
-  bool startPointSelection = false;
-  bool endPointSelection = false;
-  bool manualRouteMode = false;
-
   // Route start/end markers rendered on the map (owned by the map/layer).
   // Stored here to keep route-related state localized.
   QGVItem* startPointMarker = nullptr;

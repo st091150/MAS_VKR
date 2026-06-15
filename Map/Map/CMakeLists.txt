@@ -47,7 +47,6 @@ add_subdirectory(features)
 add_subdirectory(utils)
 add_subdirectory(geometry)
 add_subdirectory(services)
-add_subdirectory(layers)
 add_subdirectory(dialogs)
 add_subdirectory(clipper)
 

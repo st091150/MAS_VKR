@@ -1,0 +1,117 @@
+# Build directories
+/build/
+**/build/
+cmake-build-*/
+out/
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+Makefile
+*.ninja
+.ninja_deps
+.ninja_log
+Testing/
+qtcsettings.cmake
+*.cmake.user
+
+# Qt Creator / IDE user files
+*.user
+*.user.*
+*.autosave
+*.cbp
+*.creator
+*.creator.user*
+*.includes
+*.files
+*.config
+*.cflags
+*.cxxflags
+
+# IDE / editor
+.vscode/
+.idea/
+*.code-workspace
+*.swp
+*.swo
+*~
+
+# Qt / CMake autogen
+*_autogen/
+*_autogen_timestamp_deps
+.qtc/
+.qtc_clangd/
+**/.qtc_clangd/
+**/.cache/clangd/
+
+# Generated binaries/libs
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.dll
+*.dylib
+*.exe
+*.pdb
+*.ilk
+*.exp
+
+# Qt generated files
+moc_*.cpp
+moc_*.h
+qrc_*.cpp
+ui_*.h
+*.qm
+
+# LaTeX (diploma/)
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.lof
+*.log
+*.lot
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+*.xdv
+*.nav
+*.snm
+*.vrb
+
+# Local logs and temp
+build_log.txt
+*.tmp
+*.temp
+
+# Python (tests, ROS scripts)
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+.venv/
+venv/
+
+# ROS 2 / colcon (if workspace is inside repo)
+install/
+log/
+colcon.meta
+
+# Project (local, not in repo)
+/diploma/
+/docs/
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini

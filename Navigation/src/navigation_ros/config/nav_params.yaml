@@ -1,0 +1,54 @@
+/**:
+  ros__parameters:
+    # ROS-топики (контракт с реальным роботом и bridge.yaml)
+    cmd_vel_topic: "/cmd_vel"
+    gps_topic: "/gps/fix"
+    imu_topic: "/imu/data"
+    marker_topic: "/waypoint_markers"
+    frame_id: "map"
+
+    # Датчики и поза
+    gps_filter_alpha: 0.15
+    # Gazebo не задаёт шум orientation в SDF; моделируется в GpsImuPoseEstimator (рад).
+    yaw_noise_stddev_rad: 0.02
+    min_gps_fix_status: 0
+    gps_timeout_sec: 2.0
+    imu_timeout_sec: 1.0
+
+    # Маршрут (waypoint_file задаётся из sim.launch.py)
+    default_reach_radius_m: 0.9
+    overshoot_retry_margin_m: 1.0
+    overshoot_min_travel_m: 1.5
+    overshoot_best_improve_m: 0.12
+    trajectory_min_step_m: 0.35
+    show_trajectory: true
+
+    # Управление
+    control_hz: 20.0
+    turn_kp: 2.2
+    max_turn_cmd: 0.8
+    turn_min_cmd: 0.12
+    max_forward_cmd: 0.35
+    forward_gain: 0.45
+    forward_min_cmd: 0.05
+    turn_direction_sign: 1.0
+    forward_direction_sign: 1.0
+
+    # Поворот и прямой
+    yaw_tolerance_rad: 0.05
+    heading_realign_rad: 0.35
+    course_check_period_sec: 5.0
+    drive_heading_hold: true
+    drive_heading_kp: 2.0
+    drive_heading_max_rps: 0.18
+    slowdown_distance_m: 1.2
+    slowdown_forward_cmd: 0.25
+
+    # Стабилизация после манёвра
+    settle_time_sec: 0.25
+    settle_timeout_sec: 1.5
+    settle_use_gps_velocity: false
+    settle_w_epsilon_rps: 0.08
+    settle_v_epsilon_mps: 0.05
+
+    debug_log_hz: 1.0

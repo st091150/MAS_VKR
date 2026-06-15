@@ -1,0 +1,13 @@
+{
+  "origin": { "latitude": 55.0, "longitude": 37.0, "yaw": 0.0 },
+  "default_reach_radius_m": 0.9,
+  "waypoints": [
+    { "id": "wp_1", "latitude": 55.0, "longitude": 37.00019575, "reach_radius_m": 0.9 },
+    { "id": "wp_2", "latitude": 55.0000449, "longitude": 37.00039155, "reach_radius_m": 0.9 },
+    { "id": "wp_3", "latitude": 55.00017965, "longitude": 37.00039155, "reach_radius_m": 1.0 },
+    { "id": "wp_4", "latitude": 55.0002246, "longitude": 37.0001566, "reach_radius_m": 0.9 },
+    { "id": "wp_5", "latitude": 55.00008985, "longitude": 37.00003915, "reach_radius_m": 0.9 },
+    { "id": "wp_6", "latitude": 55.0001572, "longitude": 36.9999217, "reach_radius_m": 0.9 },
+    { "id": "wp_7", "latitude": 55.00003595, "longitude": 37.0000783, "reach_radius_m": 0.9 }
+  ]
+}
